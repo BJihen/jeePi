@@ -1,0 +1,54 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head> </h:head> 
+
+	
+
+<h:form> 
+
+   
+     <p:dataScroller   value="#{proUserManagementBean.doListCampanyByProUser()}" var="c" chunkSize="10">
+        <f:facet name="header">
+            My Campanies
+        </f:facet>
+ 
+        <h:panelGrid columns="2" columnClasses="logo,detail">
+            <p:graphicImage name="images/#{c.image}" width="200" height="200"/> 
+            
+ 
+          
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="First Name:" />
+                    <h:outputText value="#{c.name}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Adress:" />
+                    <h:outputText value="#{c.addresse}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Activity:" />
+                    <h:outputText value="#{c.activitySector}" style="font-weight: bold"/>
+                    
+                    <h:outputText value="Phone :" />
+                    <h:outputText value="#{c.phone}" style="font-weight: bold"/>
+                    
+                     <h:outputText value="Etat:" />
+                    <h:outputText value="#{c.etat}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+      <p:commandButton value="Activer"  action="#{proUserManagementBean.doActiverEntreprise(c)}"   update="@form" icon="ui-icon-check"  />
+                  <p:commandButton value="Desactiver"  action="#{proUserManagementBean.doDesActiverEntreprise(c)}"   update="@form" icon="ui-icon-check"  />
+            
+        </h:panelGrid>
+    </p:dataScroller> 
+  
+        
+</h:form>
+			
+			
+			</html>
+			

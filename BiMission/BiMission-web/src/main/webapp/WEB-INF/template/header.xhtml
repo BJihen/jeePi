@@ -1,0 +1,208 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	
+	
+	 <header>
+        <!-- header container start here-->
+        <div id="top">
+            <!-- top container start here-->
+            <div class="container">
+                <div id="top-links">
+                    <ul class="list-inline pull-left button">
+                        <li>
+                         
+                        </li>
+                        <li>
+                            <a href="pages/AddRequest?faces-redirect=true"><span>CONTACT US</span></a>
+                        </li>
+                        <li>
+                            <a href="contact.html"><span>EMAIL : INFO@JOBPORTAL.COM</span></a>
+                        </li>
+                    </ul>
+                    <ul class="list-inline pull-right icon">
+                        <li>
+                            <a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://plus.google.com/" target="_blank"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li>
+                        <li>
+                            <a href="https://in.pinterest.com/" target="_blank"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- top container end here-->
+        </div>
+        <div class="container">
+
+
+
+            <div class="row">
+                <div class="col-sm-3 col-md-3 col-xs-12">
+                    <!-- logo start here-->
+                    <div id="logo">
+                        <a href="index.html">
+                            <img class="img-responsive logochange" alt="logo" title="logo" src="#{request.contextPath}/WEB-INF/template/images/ponos.png" />
+                        </a>
+                    </div>
+                    <!-- logo end here-->
+                </div>
+                <div class="col-sm-3 col-md-3 col-xs-12 visible-xs paddleft">
+                    <!-- button-login start here -->
+                    <div class="button-login pull-right">
+                        <button type="button" class="btn btn-default btn-lg" onclick="location.href='login.html'"><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                        <button type="button" ></button>
+                    </div>
+                    <!-- button-login end here -->
+                </div>
+                <div class="col-sm-9 col-md-9 col-xs-12">
+                    <!-- menu start here-->
+                    
+                    
+                    <h:form rendered="#{peopleManagementBean.loggedInAsProUser}">
+                    
+                    
+                    <nav class="navbar" id="menu">
+                        <div class="navbar-header">
+                            <span class="menutext visible-xs">Menu</span>
+                            <button data-target=".navbar-ex1-collapse" data-toggle="collapse" class="btn btn-navbar navbar-toggle" type="button"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-ex1-collapse padd0">
+                            <ul class="nav navbar-nav pull-left">
+                                <li class="dropdown">
+                                    <a href='@Html.ActionLink("Index", "Home")' data-toggle="dropdown" class="dropdown-toggle">Campany</a>
+                                    <div class="dropdown-menu animated fadeInDown">
+                                        <div class="dropdown-inner">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                            
+                                                    <a href="http://localhost:18080/BiMission-web/pages/ProUser/ListCampanyIframe.jsf" >List Campany</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://localhost:18080/BiMission-web/pages/ProUser/ActivDesActivIFrame.jsf" > Activer/DesActiver</a>
+                                                </li>
+                                                
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Simple User</a>
+                                    <div class="dropdown-menu animated fadeInDown">
+                                        <div class="dropdown-inner">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a href="http://localhost:18080/BiMission-web/pages/ProUser/SUdispoIFrame.jsf" >Affectation</a>
+                                                </li>
+                                                <li>
+                                                    <a href="http://localhost:18080/BiMission-web/pages/ProUser/SuNotdispoIFrame.jsf">DesAffecter</a>
+                                                </li>
+                                                <li>
+                                                    <a  href="http://localhost:18080/BiMission-web/pages/ProUser/afficheStatIframe.jsf">job detail</a>
+                                                </li>
+                                                <li>
+                                                    <a href="apply-job-form.html">apply job form</a>
+                                                </li>
+                                                <li>
+                                                    <a href="jobs-search.html">Search job</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                
+                                <li class="dropdown">
+                                    <a href="http://localhost:18080/BiMission-web/pages/ProUser/afficheStatIframe.jsf" data-toggle="dropdown" class="dropdown-toggle">Stat</a>
+                                    <div class="dropdown-menu animated fadeInDown">
+                                        <div class="dropdown-inner">
+                                            <ul class="list-unstyled">
+                                                <li>
+UpComing Events
+                                                </li>
+                                                <li>
+My participations                                               
+ </li>
+                                               
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">EMPLOYERS</a>
+                                    <div class="dropdown-menu animated fadeInDown">
+                                        <div class="dropdown-inner">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a href="employers.html">employers</a>
+                                                </li>
+                                                <li>
+                                                    <a href="employer-detail.html">employer detail</a>
+                                                </li>
+                                                <li>
+                                                    <a href="submit-job.html">Submit Job</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="dropdown">
+                                    <a data-toggle="dropdown" class="dropdown-toggle" href="#"> #{peopleManagementBean.user.firstnamePerson}</a>
+                                  <!--   <div class="dropdown-menu animated fadeInDown">
+                                        <div class="dropdown-inner">
+                                            <ul class="list-unstyled">
+                                                <li>
+                                                    <a href="blog.html">blog</a>
+                                                </li>
+                                                <li>
+                                                    <a href="blog-detail.html">blog detail</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div> -->
+                                </li>
+                             
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- menu end here -->
+                    
+                    
+                    
+                    </h:form>
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <!-- button-login start here -->
+                    <div class="button-login pull-right hidden-xs">
+                        <!-- <button type="button" class="btn btn-primary btn-lg" > LogOut</button> -->
+                        <ui:include src="/WEB-INF/template/identity.xhtml" />
+                    </div>
+                    <!-- button-login end here -->
+                </div>
+
+            </div>
+        </div>
+        <!-- header container end here -->
+    </header>
+    <!-- header end here -->
+	
+	
+	
+	
+	</ui:composition>

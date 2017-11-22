@@ -1,0 +1,121 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="title">All Etat Financiere</ui:define>
+	<ui:define name="content">
+
+
+
+
+
+		<h1>Campany display</h1>
+		<p:commandButton action="AddEtatFinanciere?faces-redirect=true"
+			icon="ui-icon-disk" title="Add" />
+		<h:form id="form">
+
+			<p:dataTable
+				value="#{etatFinanciereManagmentBean.doListEtatFinanciere()}"
+				var="c">
+
+				<p:column headerText="CA">
+
+					<h:outputText value="#{c.CA}" />
+				</p:column>
+
+				<p:column headerText="Electricité">
+					<h:outputText value="#{c.coutElectricité}" />
+				</p:column>
+				<p:column headerText="Loyer">
+					<h:outputText value="#{c.coutLoyer}" />
+				</p:column>
+				<p:column headerText="Sanitaire">
+					<h:outputText value="#{c.coutSanitaire}" />
+				</p:column>
+				<p:column headerText="Salaire">
+					<h:outputText value="#{c.fraisSalarier}" />
+				</p:column>
+				
+				<p:column headerText="Objectif">
+					<h:outputText value="#{c.objectif}" />
+				</p:column>
+
+			
+
+				 <p:column style="width:24px">
+					<p:commandLink update=":form:documentPanel" 
+						oncomplete="PF('documentDialog').show()" title="View Detail"
+						styleClass="ui-icon ui-icon-search">
+						   <f:setPropertyActionListener value="#{c}" target="#{etatFinanciereManagmentBean.etatFinancier}" />
+					</p:commandLink>
+				</p:column> 
+
+
+
+
+		
+
+			</p:dataTable>
+
+
+
+
+
+		<p:dialog id="dialog" header="Document Detail" showEffect="fade"
+					widgetVar="documentDialog" modal="true" resizable="false">
+					<p:outputPanel id="documentPanel">
+						<p:panelGrid columns="2" columnClasses="label,value"
+							rendered="#{not empty etatFinanciereManagmentBean.etatFinancier}">
+
+							
+
+
+							<h:outputLabel for="name" value="CA: " />
+							<p:inputText value="#{etatFinanciereManagmentBean.etatFinancier.CA}" />
+
+
+							<h:outputLabel for="name" value="Electricité: " />
+							<p:inputText value="#{etatFinanciereManagmentBean.etatFinancier.coutElectricité}" />
+
+
+							<h:outputLabel for="name" value="Loyer: " />
+							<p:inputText value="#{etatFinanciereManagmentBean.etatFinancier.coutLoyer}" />
+							
+						
+
+							<h:outputLabel for="name" value="Sanitaire: " />
+							<p:inputText value="#{etatFinanciereManagmentBean.etatFinancier.coutSanitaire}" />
+							
+						
+
+							<h:outputLabel for="name" value="Salaire Employer: " />
+							<p:inputText value="#{etatFinanciereManagmentBean.etatFinancier.fraisSalarier}" />
+							
+							<h:outputLabel for="name" value="Objectif: " />
+							<p:inputText value="#{etatFinanciereManagmentBean.etatFinancier.objectif}" />
+
+							  <p:commandButton action="#{etatFinanciereManagmentBean.doUpdateEtat()}" id="iconOnly"  icon="ui-icon-disk" title="Update" />
+			            
+			             <p:commandButton action="#{etatFinanciereManagmentBean.doDeleteEtat()}"  icon="ui-icon-disk" title="Delete" />
+
+						</p:panelGrid>
+					</p:outputPanel>
+				</p:dialog> 
+
+
+		</h:form>
+
+
+
+
+
+
+	</ui:define>
+
+
+</ui:composition>

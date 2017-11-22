@@ -1,0 +1,28 @@
+
+#btn{
+  border-radius: .5em; 
+  border: .2rem solid #fff ;
+  color: #fff;
+  display: inline-block;
+  line-height: 3;
+  outline: none;
+  text-decoration: none;
+  transform: scale(1, 1);
+  transition: background .5s, border .1s, transform .25s;
+  width: 10em;
+  max-width: 100%;
+}
+  #btn:before{
+    content: "Trendy Button"
+}
+  #btn:hover{
+    background:  #c0392b;
+    border-color: transparent;
+    color: black;
+    &:before;
+      content: "PUSH IT!";
+}
+  #btn:active{
+    background:  #c0392b;
+    transform: scale(1.5, 1.5);
+}

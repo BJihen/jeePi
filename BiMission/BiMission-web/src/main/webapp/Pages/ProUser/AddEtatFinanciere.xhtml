@@ -1,0 +1,88 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head> </h:head> 
+<h:body> 
+
+
+		<h:form>
+			<p:panel header="Validate">
+				<p:messages autoUpdate="true" />
+
+				<h:panelGrid id="grid" columns="4" cellpadding="5">
+					<h:outputLabel for="name" value="Chiffre d'affaire:"
+						style="font-weight:bold" />
+					<p:inputText id="name"
+						value="#{etatFinanciereManagmentBean.etatFinancier.CA}"
+						required="true" />
+					<p:message for="name" />
+					<h:outputText value="#{validationView.text}" />
+
+
+
+					<h:outputLabel for="activitySector" value="Loyer:"
+						style="font-weight:bold" />
+					<p:inputText id="activitySector"
+						value="#{etatFinanciereManagmentBean.etatFinancier.coutLoyer}"
+						required="true" />
+					<p:message for="activitySector" />
+					<h:outputText value="#{validationView.text}" />
+
+
+					<h:outputLabel for="addresse" value="Electricité:"
+						style="font-weight:bold" />
+					<p:inputText id="addresse"
+						value="#{etatFinanciereManagmentBean.etatFinancier.coutElectricité}"
+						required="true" />
+					<p:message for="addresse" />
+					<h:outputText value="#{validationView.text}" />
+
+
+					<h:outputLabel for="phone" value="Sanitaire:"
+						style="font-weight:bold" />
+					<p:inputText id="phone"
+						value="#{etatFinanciereManagmentBean.etatFinancier.coutSanitaire}"
+						required="true" />
+					<p:message for="phone" />
+					<h:outputText value="#{validationView.text}" />
+
+
+					<h:outputLabel for="Salaire" value="Salarié :"
+						style="font-weight:bold" />
+					<p:inputText id="Salaire"
+						value="#{etatFinanciereManagmentBean.etatFinancier.fraisSalarier}"
+						required="true" />
+					<p:message for="Salaire" />
+					<h:outputText value="#{validationView.text}" />
+					
+						<h:outputLabel for="objectif" value="Objectif:"
+						style="font-weight:bold" />
+					<p:inputText id="objectif"
+						value="#{etatFinanciereManagmentBean.etatFinancier.objectif}"
+						required="true" />
+					<p:message for="objectif" />
+					<h:outputText value="#{validationView.text}" />
+
+					<h:outputLabel for="popup" value="Date d'ajout:"
+						style="font-weight:blod" />
+					<p:calendar id="popup"
+						value="#{etatFinanciereManagmentBean.etatFinancier.date}" />
+
+
+				</h:panelGrid>
+
+				<p:commandButton value="Save"
+					action="#{etatFinanciereManagmentBean.doAddEtatFinancier()}"
+					ajax="false" icon="ui-icon-check" validateClient="true"
+					style="margin-right:10px" />
+
+			</p:panel>
+		</h:form>
+
+
+</h:body>
+</html>

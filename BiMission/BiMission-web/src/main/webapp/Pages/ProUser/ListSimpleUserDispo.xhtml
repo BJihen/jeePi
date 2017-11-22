@@ -1,0 +1,108 @@
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head> </h:head> 
+
+
+
+
+		<h:form>
+
+			<p:inputText id="txt1" value="#{simpleUserManagementBean.text}"
+				label="Text 1">
+			</p:inputText>
+			<p:commandButton update="@form" value="Search"
+				action="#{simpleUserManagementBean.doSearchSimpleUser(simpleUserManagementBean.text)}" />
+
+			<p:dataScroller
+				value="#{simpleUserManagementBean.doSearchSimpleUser(simpleUserManagementBean.text)}"
+				var="c" chunkSize="10">
+				<f:facet name="header">
+            Employees Disponible
+        </f:facet>
+
+				<h:panelGrid columns="2" style="width:100%"
+					columnClasses="logo,detail">
+					<p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />
+
+					<p:outputPanel>
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputText value="First Name:" />
+							<h:outputText value="#{c.firstnamePerson}"
+								style="font-weight: bold" />
+
+							<h:outputText value="Last Name:" />
+							<h:outputText value="#{c.lastnamePerson}"
+								style="font-weight: bold" />
+
+							<h:outputText value="Disponibilité :" />
+							<h:outputText value="#{c.etatSimpleUser}"
+								style="font-weight: bold" />
+
+							<h:outputText value="Spécialité :" />
+							<h:outputText value="#{c.specialite}" style="font-weight: bold" />
+							<h:outputText value="personid :" />
+							<h:outputText value="#{c.personId}" style="font-weight: bold" />
+
+
+						</h:panelGrid>
+					</p:outputPanel>
+
+
+
+
+					<p:column style="width:24px">
+						<p:commandLink oncomplete="PF('documentDialog').show()"
+							title="View Detail" styleClass="ui-icon ui-icon-search">
+							<f:setPropertyActionListener value="#{c}"
+								target="#{simpleUserManagementBean.simpleUser}" />
+						</p:commandLink>
+					</p:column>
+
+
+				</h:panelGrid>
+			</p:dataScroller>
+
+
+
+
+
+
+
+			<p:dialog id="dialog" header="Document Detail" showEffect="fade"
+				widgetVar="documentDialog" modal="true" resizable="false">
+				<p:outputPanel id="documentPanel">
+					<p:panelGrid columns="2" columnClasses="label,value">
+
+
+
+
+
+						<p:outputLabel for="basic" value="Basic:" />
+						<p:selectOneListbox id="basic"
+							value="#{simpleUserManagementBean.id}">
+							<f:selectItems value="#{simpleUserManagementBean.lstCampany}"
+								var="t" itemLabel="#{t.name}" itemValue="#{t.campanyId}" />
+
+						</p:selectOneListbox>
+
+						<p:commandButton value="Affecter" update="@form"
+							action="#{simpleUserManagementBean.doAffecterSimpleUToEntreprise(simpleUserManagementBean.simpleUser.personId)}"
+							icon="ui-icon-check" />
+
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+
+
+
+
+		</h:form>
+
+
+
+</html>

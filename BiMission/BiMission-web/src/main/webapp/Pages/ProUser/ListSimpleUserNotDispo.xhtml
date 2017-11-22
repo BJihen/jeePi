@@ -1,0 +1,51 @@
+	<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/template.xhtml"
+	                xmlns:p="http://primefaces.org/ui">
+	<ui:define name="title">Simple User Disponible</ui:define>
+	<ui:define name="content">
+	
+
+<h:form> 
+
+   <p:inputText id="txt1" value="#{simpleUserManagementBean.text}" label="Text 1">  </p:inputText>
+   <p:commandButton process="@parent:@parent" update="@form" value="Search" action="#{simpleUserManagementBean.doSearchSimpleUserNotDispo(simpleUserManagementBean.text)}"/> 
+            
+    <p:dataScroller  value="#{simpleUserManagementBean.doSearchSimpleUserNotDispo(simpleUserManagementBean.text)}" var="c" chunkSize="10">
+        <f:facet name="header">
+            Simple Users Non disponible
+        </f:facet>
+ 
+         <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+            <p:graphicImage name="demo/images/car/#{car.brand}-big.gif" /> 
+           
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="First Name:" />
+                    <h:outputText value="#{c.firstnamePerson}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Last Name:" />
+                    <h:outputText value="#{c.lastnamePerson}" style="font-weight: bold"/>
+ 
+                    <h:outputText value="Disponibilité :" />
+                    <h:outputText value="#{c.etatSimpleUser}" style="font-weight: bold"/>
+                    
+                    <h:outputText value="Spécialité :" />
+                    <h:outputText value="#{c.specialite}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+            
+            <p:commandButton value="Desaffecter" update="@form"   action="#{simpleUserManagementBean.doDesAffecterSimpleUToEntreprise(c.personId)}"  icon="ui-icon-check"  />
+     </h:panelGrid>
+    </p:dataScroller>
+    
+      
+</h:form>
+			
+			</ui:define>
+
+</ui:composition>

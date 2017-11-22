@@ -1,0 +1,115 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	template="/WEB-INF/template/frontoffice.xhtml"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+		<section>
+
+
+
+
+			<!-- login start here -->
+
+			<div id="login">
+
+				<div class="container">
+
+					<div class="row">
+
+						<div class="col-md-12 col-sm-12 col-xs-12">
+							<!-- login-content start here -->
+
+							<div class="login-content">
+
+								<h1>Login</h1>
+
+								<ul class="list-inline">
+
+									<li><a href="">Home</a></li>
+
+									<li>&gt;</li>
+
+									<li><a href="">Login</a></li>
+								</ul>
+							</div>
+							<!-- login-content end here -->
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- login end here -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+			<div id="login-form">
+
+	<div class="container">
+
+		<div class="row">
+
+			<div class="col-sm-offset-2 col-md-8 col-sm-8  col-xs-12">
+
+				<div class="form">
+
+					<div class="border" />
+
+					<div class="border1" />
+					<h:form class="form-horizontal" method="post">
+						<fieldset>
+
+							<div class="form-group">
+
+								<div class="col-sm-12">
+									
+									<h:inputText value="#{peopleManagementBean.user.login}"
+							placeholder="Login" class="form-control" />
+								</div>
+							</div>
+
+							<div class="form-group">
+
+								<div class="col-sm-12">
+									<h:inputSecret value="#{peopleManagementBean.user.password}"
+							placeholder="Password" class="form-control" />
+								</div>
+							</div>
+
+
+							
+
+							<div class="button">
+								<h:commandButton action="#{peopleManagementBean.doLogin()}"
+							value="Login" />
+							</div>
+
+
+						
+						</fieldset>
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- login-form  end here -->
+
+
+		</section>
+	</ui:define>
+
+</ui:composition>
+

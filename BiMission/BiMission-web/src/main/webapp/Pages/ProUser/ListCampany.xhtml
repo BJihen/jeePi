@@ -1,0 +1,106 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head> </h:head> 
+<h:body> 
+	
+
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyDTmZ40wzsMFfqfgGXOdpuTZirpv1c5Zvk"  />
+
+
+<h1>Campany display</h1>
+		 <p:commandButton action="AddCampany?faces-redirect=true"  icon="ui-icon-disk" title="Delete" />
+			<h:form id="form">
+			
+			    <p:dataTable value="#{campanyManagmentBean.doListCampany()}" var="c">
+			          
+			          <p:column headerText="Name">
+			           <p:graphicImage name="images/#{c.image}" width="100" height="50"/> 
+			        </p:column>
+			          
+			        <p:column headerText="Name">
+			            <h:outputText value="#{c.name}" />
+			        </p:column>
+			         <p:column headerText="Activity">
+			            <h:outputText value="#{c.activitySector}" />
+			        </p:column>
+			        <p:column headerText="Adress">
+			            <h:outputText value="#{c.addresse}" />
+			        </p:column>
+			        <p:column headerText="PhoneNumber">
+			            <h:outputText value="#{c.phone}" />
+			        </p:column>
+			        <p:column style="width:24px">
+			            <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search">
+			                <f:setPropertyActionListener value="#{c}" target="#{campanyManagmentBean.entreprise}" />
+			            </p:commandLink>
+			        </p:column>
+			        
+			          <p:column style="width:24px">
+			          
+			           <p:commandButton action="AddEtatFinanciere?faces-redirect=true"  icon="ui-icon-disk" title="Etat" >
+			           <f:setPropertyActionListener value="#{c.campanyId}" target="#{etatFinanciereManagmentBean.id}" />
+			           </p:commandButton>
+			           
+			        </p:column> 
+			        
+			        <p:column style="width:24px">
+			          
+			           <p:commandButton action="AfficheStat?faces-redirect=true"  icon="ui-icon-disk" title="Etat" >
+			           <f:setPropertyActionListener value="#{c.campanyId}" target="#{etatFinanciereManagmentBean.id}" />
+			           </p:commandButton>
+			           
+			        </p:column> 
+
+
+			          
+			    </p:dataTable>
+			 
+			    <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true" resizable="false">
+			        <p:outputPanel id="documentPanel">
+			            <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty campanyManagmentBean.entreprise}">
+			               
+			                <h:outputLabel for="name" value="Name: " />
+			                <p:inplace id="basic">
+           					 <p:inputText value="#{campanyManagmentBean.entreprise.name}" />
+       		 				</p:inplace>
+       		 				
+       		 				
+       		 				 <h:outputLabel for="name" value="Activity: " />
+			                
+           					 <p:inputText value="#{campanyManagmentBean.entreprise.activitySector}" />
+       		 			
+       		 				
+       		 				 <h:outputLabel for="name" value="Adress: " />
+			                
+           					 <p:inputText value="#{campanyManagmentBean.entreprise.addresse}" />
+       		 				
+       		 				
+       		 				 <h:outputLabel for="name" value="Phone: " />
+			                
+           					 <p:inputText value="#{campanyManagmentBean.entreprise.phone}" />
+       		 			<h:outputLabel for="name" value="Location: " />	
+       		 			
+           					 <p:inputText value="#{campanyManagmentBean.entreprise.campanyId}" />
+        <p:gmap id="gmap" center="36.890257,30.707417" zoom="13" type="HYBRID" style="width:600px;height:400px"
+    model="#{campanyManagmentBean.displayMap()}"  />
+        
+		
+			                <p:commandButton action="#{campanyManagmentBean.doUpdateCampany()}"  value="Edit" icon="fa fa-fw fa-edit" title="Update" />
+			            
+			             <p:commandButton action="#{campanyManagmentBean.doDeleteCampany()}"  icon="ui-icon-disk" title="Delete" />
+			            
+			            </p:panelGrid>
+			        </p:outputPanel>
+			    </p:dialog>
+			</h:form>
+
+
+
+
+		</h:body>
+		</html>
